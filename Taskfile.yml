@@ -1,0 +1,14 @@
+version: '3'
+
+tasks:
+  kube:getpods:
+    desc: "Get all pods in a namespace"
+    cmds:
+      - kubectl get pods -o jsonpath='{.items[].metadata.name}' -n {{.CLI_ARGS}}
+  kube:shell:
+    desc: "Get a shell on a pod"
+    cmds:
+      - kubectl exec -it {{.POD_NAME} -n {{.CLI_ARGS}} -- /bin/bash
+    vars:
+      POD_NAME: 
+        sh: "task kube:getpods -- {{.CLI_ARGS}}"
