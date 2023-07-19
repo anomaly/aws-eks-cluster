@@ -20,8 +20,9 @@ resource "aws_eks_node_group" "default" {
     release_version = nonsensitive(data.aws_ssm_parameter.eks_ami_release_version.value)
     node_group_name = "example"
     node_role_arn = var.iam_roles.ec2.arn
-    ami_type = "AL2_x86_64"
-    instance_types = ["t3.small"]
+    # Switching to graviton based processors, containers must supply arm64 images
+    ami_type = "AL2_ARM_64"
+    instance_types = ["t4g.small"]
     subnet_ids = var.subnets[*].id
 
     launch_template {

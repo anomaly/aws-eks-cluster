@@ -17,7 +17,8 @@ resource "aws_elasticache_cluster" "redis" {
     port = 6379
 
     # Smallest types are: cache.t2.micro, cache.t3.micro, cache.t4g.micro
-    node_type = "cache.t2.micro"
+    # t4g.micro is a graviton based instances
+    node_type = "cache.t4g.micro"
 
     # Initial number of cache nodes that the cache cluster will have.
     # For Redis, this value must be 1.

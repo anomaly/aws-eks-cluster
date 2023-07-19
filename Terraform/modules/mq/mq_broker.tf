@@ -16,7 +16,8 @@ resource "aws_mq_broker" "default" {
     # https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/activemq-version-management.html
     engine_version = "5.17.2"
 
-    host_instance_type = "mq.t2.micro"
+    # Ideally want to switch this to graviton instances when they are available.
+    host_instance_type = "mq.t3.micro"
     apply_immediately = false
 
     # The deployment mode of the broker: SINGLE_INSTANCE or ACTIVE_STANDBY_MULTI_AZ
