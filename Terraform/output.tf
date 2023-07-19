@@ -15,7 +15,17 @@ output "rds_aurora_cluster_endpoint" {
     value = module.aws_rds_aurora.cluster.endpoint
 }
 
+output "rds_aurora_cluster_master_password" {
+    sensitive = true
+    value = module.aws_rds_aurora
+}
+
 output "eks_cluster_endpoint" {
     sensitive = false
     value = module.aws_eks.cluster.endpoint
+}
+
+output "rds_master_credentials" {
+    sensitive = true
+    value     = module.aws_secrets_manager.rds_master_credentials
 }

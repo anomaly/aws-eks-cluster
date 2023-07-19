@@ -8,3 +8,8 @@ output "secrets" {
         redis_cluster_endpoint = aws_secretsmanager_secret.redis_cluster_endpoint
     }
 }
+
+output "rds_master_credentials" {
+    sensitive = true
+    value = data.aws_secretsmanager_secret_version.rds_master_credentials.secret_string
+}
