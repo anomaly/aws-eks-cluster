@@ -17,12 +17,12 @@ resource "aws_rds_cluster" "default" {
     cluster_identifier = "${lower(var.tags.Name)}-aurora-cluster"
 
     # PostgreSQL
-    #engine = "aurora-postgresql"
-    #engine_version = "..."
+    engine = "aurora-postgresql"
+    engine_version = "15"
 
     # MySQL
-    engine = "aurora-mysql"
-    engine_version = "8.0.mysql_aurora.3.03.0"
+    # engine = "aurora-mysql"
+    # engine_version = "8.0.mysql_aurora.3.03.0"
 
     engine_mode = "provisioned"
 
