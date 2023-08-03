@@ -29,3 +29,4 @@ output "rds_master_credentials" {
     sensitive = true
     value     = module.aws_secrets_manager.rds_master_credentials
 }
+

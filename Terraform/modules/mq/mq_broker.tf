@@ -12,9 +12,9 @@
 resource "aws_mq_broker" "default" {
     broker_name = "${replace(lower(var.tags.Name), "/[^a-z0-9]/", "")}-mq-broker"
 
-    engine_type = "ActiveMQ"
+    engine_type = "RabbitMQ"
     # https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/activemq-version-management.html
-    engine_version = "5.17.2"
+    engine_version = "3.11.16"
 
     # Ideally want to switch this to graviton instances when they are available.
     host_instance_type = "mq.t3.micro"

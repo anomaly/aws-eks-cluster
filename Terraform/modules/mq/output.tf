@@ -16,6 +16,7 @@ output "mq_broker_access_details" {
     value = {
         username = var.mq_broker_username
         password = random_password.password.result
-        endpoint = aws_mq_broker.default.instances.0.endpoints.1
+        endpoint = aws_mq_broker.default.instances.0.endpoints.0
     }
 }
+
