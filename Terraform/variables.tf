@@ -19,3 +19,22 @@ variable "tags" {
         "billing-id" = "k8cluster"
     }
 }
+
+variable "gh_username" {
+    type = string
+    sensitive = true
+}
+
+variable "gh_password" {
+    type = string
+    sensitive = true
+}
+
+variable "gh_email" {
+    type = string
+}
+
+variable "oci_registry" {
+    type = string
+    default = "ghcr.io"
+}

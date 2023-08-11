@@ -32,9 +32,17 @@ provider "helm" {
             command = "aws"
         }
     }
+
+    registry {
+        url = "oci://${var.oci_registry}"
+        username = var.gh_username
+        password = var.gh_password
+    }
 }
 
-# ...
+# Required for writign secrets that kubectl in the background uses
+# to write secrets, which is requried to access private repositories
+# containing images in our case Github
 provider "kubernetes" {
     host = module.aws_eks.cluster.endpoint
     cluster_ca_certificate = base64decode(module.aws_eks.cluster.certificate_authority[0].data)

@@ -10,3 +10,17 @@ variable "namespace" {
 variable "tags" {
     type = map
 }
+
+variable "gh_username" {
+    type = string
+    sensitive = true
+}
+
+variable "gh_password" {
+    type = string
+    sensitive = true
+}
+
+variable "gh_email" {
+    type = string
+}

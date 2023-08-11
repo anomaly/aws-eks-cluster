@@ -81,6 +81,9 @@ module "aws_elasticache" {
 module "helm_charts" {
     source = "./modules/helm"
     eks_cluster = module.aws_eks.cluster
+    gh_username = var.gh_username
+    gh_password = var.gh_password
+    gh_email = var.gh_email
     tags = var.tags
 }
 
