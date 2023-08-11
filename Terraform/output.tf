@@ -30,3 +30,6 @@ output "rds_master_credentials" {
     value     = module.aws_secrets_manager.rds_master_credentials
 }
 
+output "ingress_lb" {
+    value = module.helm_charts.ingress.dns_name
+}
