@@ -33,6 +33,8 @@ provider "helm" {
         }
     }
 
+    # This is for pulling the charts not the images, see helm.cf in module helm
+    # for a kubernetes secret that allows pulling private images
     registry {
         url = "oci://${var.oci_registry}"
         username = var.gh_username

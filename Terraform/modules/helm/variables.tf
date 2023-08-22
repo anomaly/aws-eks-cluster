@@ -11,6 +11,11 @@ variable "tags" {
     type = map
 }
 
+variable "oci_registry" {
+    type = string
+    default = "ghcr.io"
+}
+
 variable "gh_username" {
     type = string
     sensitive = true
