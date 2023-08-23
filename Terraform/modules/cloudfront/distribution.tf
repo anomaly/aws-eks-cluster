@@ -9,7 +9,7 @@ resource "aws_cloudfront_distribution" "default" {
     retain_on_delete = false
     enabled = true
 
-    aliases = ["qa.apps.elsaschools.edu.au"]
+    aliases = ["${var.fqdn}"]
 
     origin {
         domain_name = var.origins.s3_media
@@ -64,7 +64,7 @@ resource "aws_cloudfront_distribution" "default" {
     }
 
     viewer_certificate {
-        acm_certificate_arn = "arn:aws:acm:us-east-1:456595949046:certificate/7d7be959-aa60-4f94-96c0-2652f71f792d"
+        acm_certificate_arn = var.ssl_arn
         ssl_support_method = "sni-only"
         minimum_protocol_version = "TLSv1.2_2021"
 
