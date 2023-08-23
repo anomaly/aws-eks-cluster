@@ -7,3 +7,11 @@ variable "origins" {
 variable "tags" {
     type = map
 }
+
+variable "ssl_arn" {
+    type = string
+}
+
+variable "fqdn" {
+    type = string
+}

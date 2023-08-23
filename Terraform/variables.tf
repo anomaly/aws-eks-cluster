@@ -38,3 +38,11 @@ variable "oci_registry" {
     type = string
     default = "ghcr.io"
 }
+
+variable "ssl_arn" {
+    type = string
+}
+
+variable "fqdn" {
+    type = string
+}

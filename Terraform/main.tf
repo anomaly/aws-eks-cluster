@@ -96,6 +96,8 @@ module "aws_cloudfront" {
         "s3_media" = module.aws_s3.buckets.media.bucket_regional_domain_name
     }
     tags = var.tags
+    ssl_arn = var.ssl_arn
+    fqdn = var.fqdn
 }
 
 # Amazon S3
@@ -103,5 +105,13 @@ module "aws_s3" {
     source = "./modules/s3"
     cloudfront_distribution = module.aws_cloudfront.distribution
     random_identifier = random_id.identifier
+    tags = var.tags
+}
+
+# Amazon Simple Email Service (SES)
+ module "aws_ses" {
+    source = "./modules/ses"
+    sns_topics = module.aws_sns.topics
+    #random_identifier = random_id.identifier
     tags = var.tags
 }
