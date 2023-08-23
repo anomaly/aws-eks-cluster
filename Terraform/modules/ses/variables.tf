@@ -2,7 +2,7 @@
 
 variable "domain" {
     type = string
-    default = "example.com"
+    default = "elsaschools.edu.au"
 }
 
 variable "sns_topics" {
