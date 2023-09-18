@@ -84,6 +84,7 @@ module "helm_charts" {
     gh_username = var.gh_username
     gh_password = var.gh_password
     gh_email = var.gh_email
+    ssl_arn_ap2 = var.ssl_arn_ap2
     tags = var.tags
 }
 
@@ -91,7 +92,7 @@ module "helm_charts" {
 module "aws_cloudfront" {
     source = "./modules/cloudfront"
     origins = {
-        "load_balancer" = module.helm_charts.ingress.dns_name
+        "load_balancer" = "lb-${var.fqdn}"
         "s3_media" = module.aws_s3.buckets.media.bucket_regional_domain_name
     }
     tags = var.tags

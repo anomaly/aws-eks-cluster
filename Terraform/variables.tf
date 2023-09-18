@@ -43,6 +43,10 @@ variable "ssl_arn" {
     type = string
 }
 
+variable "ssl_arn_ap2" {
+    type = string
+}
+
 variable "fqdn" {
     type = string
 }
