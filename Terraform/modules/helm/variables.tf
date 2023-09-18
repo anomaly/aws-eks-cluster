@@ -29,3 +29,7 @@ variable "gh_password" {
 variable "gh_email" {
     type = string
 }
+
+variable "ssl_arn_ap2" {
+    type = string
+}
