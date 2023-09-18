@@ -4,7 +4,7 @@ resource "aws_cloudfront_distribution" "default" {
     comment = "[${var.tags.Name}] CloudFront distribution"
     is_ipv6_enabled = true
     price_class = "PriceClass_All"
-    http_version = "http2"
+    http_version = "http3"
     wait_for_deployment = false
     retain_on_delete = false
     enabled = true
@@ -28,7 +28,7 @@ resource "aws_cloudfront_distribution" "default" {
             http_port = "80"
             https_port = "443"
             origin_keepalive_timeout = 5
-            origin_protocol_policy = "http-only"
+            origin_protocol_policy = "https-only"
             origin_ssl_protocols = ["TLSv1.2"]
             origin_read_timeout = 30
         }
@@ -41,6 +41,7 @@ resource "aws_cloudfront_distribution" "default" {
         viewer_protocol_policy = "redirect-to-https"
         #viewer_protocol_policy = "allow-all"
         compress = true
+        # For unity games 
         smooth_streaming = false
         cache_policy_id = data.aws_cloudfront_cache_policy.managed_caching_disabled.id
         origin_request_policy_id = data.aws_cloudfront_origin_request_policy.managed_all_viewer_and_cloudfront_headers.id
@@ -67,9 +68,6 @@ resource "aws_cloudfront_distribution" "default" {
         acm_certificate_arn = var.ssl_arn
         ssl_support_method = "sni-only"
         minimum_protocol_version = "TLSv1.2_2021"
-
-        # cloudfront_default_certificate = true
-        # minimum_protocol_version = "TLSv1"
     }
 
     restrictions {
