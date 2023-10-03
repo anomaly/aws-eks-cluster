@@ -12,3 +12,5 @@ tasks:
     vars:
       POD_NAME: 
         sh: "task kube:getpods -- {{.CLI_ARGS}}"
+  kube:logs:
+    desc: "follow the logs on a pod"
