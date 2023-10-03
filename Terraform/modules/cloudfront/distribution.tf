@@ -62,6 +62,10 @@ resource "aws_cloudfront_distribution" "default" {
             event_type = "viewer-request"
             function_arn = aws_cloudfront_function.add_index_html.arn
         }
+        function_association {
+            event_type = "viewer-response"
+            function_arn = aws_cloudfront_function.add_header_content_encoding.arn
+        }
     }
 
     viewer_certificate {
