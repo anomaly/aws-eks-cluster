@@ -33,3 +33,8 @@ output "rds_master_credentials" {
 output "ingress_lb" {
     value = module.helm_charts.ingress.dns_name
 }
+
+output "iam_user_credentials" {
+    value = module.aws_iam.iam_user_credentials
+    sensitive = true
+}
