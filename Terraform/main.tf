@@ -12,7 +12,8 @@ module "aws_iam" {
     rds_aurora_cluster = module.aws_rds_aurora.cluster
     eks_cluster = module.aws_eks.cluster
     s3_buckets = module.aws_s3.buckets
-    secrets = module.aws_secrets_manager.secrets
+    cloudfront_distribution = module.aws_cloudfront.distribution
+    secrets = module.aws_secrets_manager.secrets    
     tags = var.tags
 }
 

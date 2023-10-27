@@ -10,6 +10,9 @@ variable "s3_buckets" {
     type = map
 }
 
+variable "cloudfront_distribution" {
+}
+
 variable "secrets" {
     type = map
 }

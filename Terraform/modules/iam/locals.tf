@@ -49,7 +49,8 @@ locals {
     user_s3_media_bucket = templatefile(
         "${path.module}/templates/user_s3_media_bucket.tftpl",
         {
-            s3_bucket_media_arn = var.s3_buckets.media.arn
+            s3_bucket_media_arn = var.s3_buckets.media.arn,
+            cloudfront_arn = var.cloudfront_distribution.arn
         }
     )
 }
