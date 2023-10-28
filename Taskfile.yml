@@ -4,13 +4,14 @@ tasks:
   kube:getpods:
     desc: "Get all pods in a namespace"
     cmds:
-      - kubectl get pods -o jsonpath='{.items[].metadata.name}' -n {{.CLI_ARGS}}
+      - |
+        kubectl get pods -o jsonpath='{.items[].metadata.name}' -n {{.CLI_ARGS}} && echo $FIRST_POD
   kube:shell:
     desc: "Get a shell on a pod"
     cmds:
       - kubectl exec -it {{.POD_NAME} -n {{.CLI_ARGS}} -- /bin/bash
     vars:
       POD_NAME: 
-        sh: "task kube:getpods -- {{.CLI_ARGS}}"
+        sh: POD_NAME=`kubectl get pods -o jsonpath='{.items[0].metadata.name}' -n {{.CLI_ARGS}}` && echo $POD_NAME
   kube:logs:
     desc: "follow the logs on a pod"
